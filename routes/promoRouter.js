@@ -11,7 +11,7 @@ promoRouter.use(bodyParser.json());
 
 promoRouter.route('/')
 .get(cors.corsWithOptions, authenticate.verifyOrdinaryUser, (req,res,next) => {
-    Promos.find({})
+    Promotions.find(req.query)
     .then((promos) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
